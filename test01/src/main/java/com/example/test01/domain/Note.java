@@ -1,6 +1,5 @@
 package com.example.test01.domain;
 
-import java.sql.Time;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -11,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import com.example.test01.controller.SqlTimeDeserializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -28,10 +27,10 @@ public class Note {
 	private long id;
 	
 	@NotBlank
-	@Max(value = 50)
+	@Size(max=50)
 	private String title;
 	
-	@Max(value = 1000)
+	@Size(max = 1000)
 	private String note;
 //	@JsonFormat(pattern = "yyyy-MM-dd")
 //	@JsonDeserialize(using = SqlTimeDeserializer.class)

@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -26,7 +27,7 @@ public class User {
 	private String email;
 	
 	@NotBlank
-	@Min(8)
+	@Size(min = 8)
 	private String password;
 	
 	@Column(name = "create_time")

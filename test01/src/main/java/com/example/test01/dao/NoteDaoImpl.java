@@ -30,12 +30,14 @@ public class NoteDaoImpl implements NoteDao {
 
 	@Override
 	public Note saveOrUpadte(Note note) {
-		if(findById(note.getId()) == null) {
+		Note dbNote = findById(note.getId());
+		if(dbNote == null) {
 			User tempUser = userDao.findById(1); // THIS WILL BE REMOVED
 			note.setUser(tempUser);
 			entityManager.persist(note);
 			return note;
 		} else {
+			note.setUser(dbNote.getUser());
 			entityManager.merge(note);
 			return note;
 		}
@@ -43,6 +45,8 @@ public class NoteDaoImpl implements NoteDao {
 
 	@Override
 	public Note update(Note note) {
+		Note dbNote = findById(note.getId());
+		note.setUser(dbNote.getUser());
 		return entityManager.merge(note);
 	}
 	
