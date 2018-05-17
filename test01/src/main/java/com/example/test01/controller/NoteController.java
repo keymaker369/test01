@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.test01.domain.Note;
@@ -16,22 +17,30 @@ public class NoteController {
 	@Autowired
 	private NoteService noteService;
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Note getNoteById(@PathVariable Integer id) {
-		return null;
+		return noteService.findNoteById();
 	}
 	
+	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	public Note updateNote(@RequestBody Note note ) {
-		return null;
+		return noteService.updateNote(note);
 	}
 	
+	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
 	public Note createNote(@RequestBody Note note ) {
-		return null;
+		return noteService.saveOrUpdate(note);
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json")
+	public void deleteNote(@PathVariable long id) {
+		noteService.deleteById(id);
 	}
 	
-	public void deleteNote(@RequestBody long noteId) {
-		
+	@RequestMapping(method = RequestMethod.PATCH, consumes = "application/json")
+	public Note partialUpdateNote(@RequestBody Note note ) {
+		return noteService.updateNote(note);
 	}
-	
 	
 	
 }
