@@ -7,10 +7,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import com.example.test01.domain.Note;
 
 @SpringBootApplication
+@EnableWebSecurity
 public class Test01Application {
 
 	public static void main(String[] args) {
