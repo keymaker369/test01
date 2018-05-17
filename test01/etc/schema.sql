@@ -22,5 +22,9 @@ CREATE TABLE `test01`.`note` (
     REFERENCES `test01`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+ALTER TABLE `test01`.`user` 
+ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC);
+
 
     

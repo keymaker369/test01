@@ -1,5 +1,7 @@
 package com.example.test01.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,7 +30,7 @@ public class NoteController {
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
-	public Note createNote(@RequestBody Note note ) {
+	public Note createNote(@Valid @RequestBody Note note ) {
 		return noteService.saveOrUpdate(note);
 	}
 

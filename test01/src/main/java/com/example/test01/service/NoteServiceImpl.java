@@ -2,6 +2,7 @@ package com.example.test01.service;
 
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.test01.dao.NoteDao;
@@ -10,6 +11,7 @@ import com.example.test01.domain.Note;
 @Service
 public class NoteServiceImpl implements NoteService {
 
+	@Autowired
 	private NoteDao noteDao;
 	
 	@Override
