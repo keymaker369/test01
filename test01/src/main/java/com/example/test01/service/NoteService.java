@@ -4,7 +4,7 @@ import com.example.test01.domain.Note;
 
 public interface NoteService {
 
-	Note findNoteById();
+	Note findNoteById(long id);
 
 	void deleteById(long noteId);
 

@@ -19,7 +19,7 @@ public class NoteController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Note getNoteById(@PathVariable Integer id) {
-		return noteService.findNoteById();
+		return noteService.findNoteById(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")

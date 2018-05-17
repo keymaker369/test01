@@ -1,34 +1,40 @@
 package com.example.test01.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
+import com.example.test01.dao.NoteDao;
 import com.example.test01.domain.Note;
 
 @Service
 public class NoteServiceImpl implements NoteService {
 
+	private NoteDao noteDao;
+	
 	@Override
-	public Note findNoteById() {
-		System.out.println("find note");
-		return new Note();
+	public Note findNoteById(long id) {
+		return noteDao.findById(id);
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(long noteId) {
-		System.out.println("delete note");
+		Note note = noteDao.findById(noteId);
+		noteDao.deleteNote(note);
 
 	}
 
 	@Override
+	@Transactional
 	public Note saveOrUpdate(Note note) {
-		System.out.println("save or update");
-		return new Note();
+		return noteDao.saveOrUpadte(note);
 	}
 
 	@Override
+	@Transactional
 	public Note updateNote(Note note) {
-		System.out.println("update note");
-		return new Note();
+		return noteDao.update(note);
 	}
 
 }

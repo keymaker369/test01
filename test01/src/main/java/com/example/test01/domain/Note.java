@@ -25,7 +25,15 @@ public class Note {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public User getUser() {
 		return user;
 	}
