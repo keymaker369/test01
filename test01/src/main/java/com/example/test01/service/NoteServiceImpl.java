@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.test01.controller.ForbiddenException;
 import com.example.test01.dao.NoteDao;
 import com.example.test01.domain.Note;
 
@@ -19,6 +20,16 @@ public class NoteServiceImpl implements NoteService {
 		return noteDao.findById(id);
 	}
 
+	@Override
+	@Transactional
+	public Note findNote(long id, String email) {
+		Note note = noteDao.findById(id);
+		if(note.getUser().getEmail().equals(email))
+			return note;
+		else 
+			return null;
+	}
+	
 	@Override
 	@Transactional
 	public void deleteById(long noteId) {

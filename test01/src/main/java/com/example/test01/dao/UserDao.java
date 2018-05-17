@@ -6,4 +6,6 @@ public interface UserDao {
 
 	User findById(long id);
 
+	User findUserByEmail(String email);
+
 }

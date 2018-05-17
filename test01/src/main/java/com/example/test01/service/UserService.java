@@ -4,6 +4,7 @@ import com.example.test01.domain.User;
 
 public interface UserService {
 
-	User findNoteById(long id);
+	User findUserById(long id);
+	User findUserByEmail(String email);
 
 }
