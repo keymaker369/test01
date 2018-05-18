@@ -10,7 +10,7 @@ public interface NoteService {
 
 	void deleteById(long noteId);
 
-	Note saveOrUpdate(Note note);
+	Note saveOrUpdate(Note note, String userEmail);
 
 	Note updateNote(Note note);
 

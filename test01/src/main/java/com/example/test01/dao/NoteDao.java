@@ -8,7 +8,7 @@ public interface NoteDao {
 
 	void deleteNote(Note note);
 
-	Note saveOrUpadte(Note note);
+	Note saveOrUpadte(Note note, String userEmail);
 
 	Note update(Note note);
 

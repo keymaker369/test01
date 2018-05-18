@@ -5,9 +5,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.test01.controller.ForbiddenException;
 import com.example.test01.dao.NoteDao;
 import com.example.test01.domain.Note;
+import com.example.test01.exception.ForbiddenException;
 
 @Service
 public class NoteServiceImpl implements NoteService {
@@ -40,8 +40,8 @@ public class NoteServiceImpl implements NoteService {
 
 	@Override
 	@Transactional
-	public Note saveOrUpdate(Note note) {
-		return noteDao.saveOrUpadte(note);
+	public Note saveOrUpdate(Note note, String userEmail) {
+		return noteDao.saveOrUpadte(note, userEmail);
 	}
 
 	@Override

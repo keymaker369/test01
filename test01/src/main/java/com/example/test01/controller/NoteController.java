@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.test01.domain.Note;
-import com.example.test01.domain.User;
+import com.example.test01.exception.ForbiddenException;
 import com.example.test01.service.NoteService;
 import com.example.test01.service.UserService;
 
@@ -44,7 +44,7 @@ public class NoteController {
 	
 	@RequestMapping(method = RequestMethod.PUT, consumes = "application/json")
 	public Note createNote(@Valid @RequestBody Note note, Principal principal ) {
-		return noteService.saveOrUpdate(note);
+		return noteService.saveOrUpdate(note, principal.getName());
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE, consumes = "application/json")

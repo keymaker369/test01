@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.test01.domain.Note;
 import com.example.test01.domain.User;
+import com.example.test01.exception.ForbiddenException;
 
 @Repository
 public class NoteDaoImpl implements NoteDao {
@@ -29,14 +30,18 @@ public class NoteDaoImpl implements NoteDao {
 	}
 
 	@Override
-	public Note saveOrUpadte(Note note) {
+	public Note saveOrUpadte(Note note, String userEmail) {
 		Note dbNote = findById(note.getId());
 		if(dbNote == null) {
-			User tempUser = userDao.findById(1); // THIS WILL BE REMOVED
+			User tempUser = userDao.findUserByEmail(userEmail);
 			note.setUser(tempUser);
 			entityManager.persist(note);
 			return note;
 		} else {
+			
+			if(!dbNote.getUser().getEmail().equals(userEmail))
+				throw new ForbiddenException("User not alowed for this note.");
+			
 			note.setUser(dbNote.getUser());
 			entityManager.merge(note);
 			return note;
