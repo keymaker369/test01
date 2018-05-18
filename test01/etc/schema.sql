@@ -26,5 +26,14 @@ CREATE TABLE `test01`.`note` (
 ALTER TABLE `test01`.`user` 
 ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC);
 
-
+INSERT INTO `test01`.`user`
+(`email`,
+`password`,
+`create_time`,
+`last_update_time`)
+VALUES
+('test@test.com',
+'password',
+'2018-01-01','2018-01-01');
+;
     
